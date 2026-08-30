@@ -14,6 +14,16 @@ SCPN Tokamak Core — CHANGELOG
 
 ### Added
 
+- Device configuration model (`src/scpn_tokamak_core/`), the first
+  implemented capability at `computational_prototype`: validated frozen
+  parameter objects for toroidal geometry, coil topology, and operational
+  limits; documented Greenwald-limit and cylindrical safety-factor
+  consistency estimates; canonical serialisation with SHA-256 digests and
+  strict NaN-rejecting round-trip parsing; a data-only pin to the SPO
+  reactor registry; and the reactor-domain validator branch enforcing the
+  populated capability shape with the ADR 0002 evidence-maturity ceiling
+  rule (design record `docs/adr/0002-device-configuration-model.md`).
+
 - Architecture-only repository scaffold: governance, security, licensing,
   REUSE metadata, contribution and support policies, and citation metadata.
 - Machine-readable domain manifest `reactor-domain.json` binding the project

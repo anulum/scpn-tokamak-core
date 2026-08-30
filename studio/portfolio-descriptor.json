@@ -5,7 +5,13 @@
     "spo_actionable": false,
     "spo_semantic_mode": "review_only"
   },
-  "capabilities": [],
+  "capabilities": [
+    {
+      "evidence_maturity": "computational_prototype",
+      "evidence_pointer": "VALIDATION.md#device-configuration-model",
+      "identifier": "device_configuration_model"
+    }
+  ],
   "configurations": [
     "conventional_tokamak",
     "spherical_tokamak"
@@ -16,10 +22,10 @@
     "identifier": "scpn-tokamak-core.control-adapter"
   },
   "device_family": "tokamak",
-  "evidence_maturity": "architecture_only",
+  "evidence_maturity": "computational_prototype",
   "lifecycle": {
     "evidence_pointer": null,
-    "reason": "architecture_only: no implemented capability exists to federate",
+    "reason": "federation gates have not run; capabilities remain repository-local",
     "state": "not_federated"
   },
   "machine_protection": {
@@ -31,8 +37,9 @@
     "not safety-certified",
     "not autonomous-plant-ready",
     "not commercially reactor-ready",
-    "no implemented solver, controller, benchmark, dataset, or deployable artefact",
-    "no experimental correlation"
+    "no implemented solver, controller, benchmark, dataset, or published artefact",
+    "no experimental correlation",
+    "no parameter set describes or validates any real machine"
   ],
   "project": "SCPN-TOKAMAK-CORE",
   "research_group": {
@@ -45,7 +52,7 @@
     "manifest_path": "reactor-domain.json",
     "manifest_schema": "scpn.reactor-domain.v1",
     "manifest_schema_version": "1.0.0",
-    "manifest_sha256": "c0490b46b18bd919eea81f2fbb81853e5f40313b5104268ada50f98b0459b213",
+    "manifest_sha256": "1544a6ee674b9415ec4654e5d64a674b6a9b9ddbda3bf5f863e15dc118c73de3",
     "repository": "SCPN-TOKAMAK-CORE"
   },
   "spo_registry": {
