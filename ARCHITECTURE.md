@@ -12,10 +12,11 @@ SCPN Tokamak Core — Architecture summary
 
 `SCPN-TOKAMAK-CORE` is the device-family owner for conventional and spherical
 tokamak configurations inside the SCPN Reactor Systems Research Group. The
-repository holds one implemented capability — the device configuration model
-at `computational_prototype` (`src/scpn_tokamak_core/`, ADR 0002) — alongside
-the device boundary, its ecosystem contracts, and the validation tooling that
-enforces both.
+repository holds two implemented capabilities at
+`computational_prototype` — the device configuration model (ADR 0002)
+and the diagnostic and clock semantics model (ADR 0003), both in
+`src/scpn_tokamak_core/` — alongside the device boundary, its ecosystem
+contracts, and the validation tooling that enforces both.
 
 The authoritative architecture record is
 [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). The ownership decision and its

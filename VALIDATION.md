@@ -86,3 +86,39 @@ Bounded claims — what is NOT claimed:
 - The estimates are rough consistency instruments, not equilibrium,
   transport, or stability results; no benchmark, dataset, solver,
   controller, or experimental correlation exists in this repository.
+
+## Diagnostic and clock semantics
+
+Evidence record of the `diagnostic_clock_semantics` capability
+(`computational_prototype`; design record: `docs/adr/0003-diagnostic-clock-semantics.md`).
+
+What is exercised, all under the 100 % statement-and-branch coverage gate:
+
+- Validated frozen declaration objects (`ClockModel`,
+  `DiagnosticChannelPlan`, `DeferredCandidate`, `DiagnosticPlan`)
+  rejecting catalogue misalignment: inapplicable candidates,
+  inadmissible carriers, evidence-vocabulary mismatches, incompatible
+  clock kinds, Nyquist violations, unresolvable event-timing bounds,
+  and incomplete candidate coverage — every rejection branch is tested.
+- A data-only pin (`ObservabilityBinding`) to the SPO
+  observability-profile catalogue release `1.0.0`
+  (`d70c0de696534e5a77066ef8420cf7ca17bc4d7321984b0ac83523dbc1dce609`),
+  bound in turn to reactor registry `1.0.0`; a plan pinned to any other
+  release is rejected.
+- Documented advisory band checks with their sources stated in the
+  code: the tokamak tearing/kink band 1–100 kHz (Hutchinson,
+  Principles of Plasma Diagnostics, 2nd ed., 2002, ch. 10) and the
+  10–100 µs ELM/sawtooth rise scale (Zohm, PPCF 38 (1996) 105);
+  findings are reported, never clamped.
+- Canonical serialisation (sorted keys, NaN/infinity rejected on both
+  emit and parse), SHA-256 digest identity, and a strict round-trip
+  parser that refuses unknown fields.
+
+Bounded claims — what is NOT claimed:
+
+- No channel describes a real diagnostic, measurement, or facility;
+  every plan is a synthetic declaration of HOW evidence slots would be
+  bound, marked `synthetic=True` by hard invariant.
+- No SPO semantic-profile ingress is declared; the profile registry
+  `ingress_state` for these configurations remains `not_declared`, and
+  no adapter, producer, or handoff exists in this repository.
