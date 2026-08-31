@@ -8,6 +8,11 @@ Contact: www.anulum.li | protoscience@anulum.li
 SCPN Tokamak Core — README
 -->
 
+<div align="center">
+  <img src="docs/assets/repo_header.png"
+       alt="SCPN Tokamak Core — Tokamak Device Configuration Truth">
+</div>
+
 # SCPN Tokamak Core
 
 Governed device-family repository for tokamak fusion systems within the SCPN
