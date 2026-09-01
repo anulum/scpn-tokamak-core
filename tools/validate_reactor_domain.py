@@ -17,8 +17,8 @@ with resolvable evidence pointers and the ADR 0002 ceiling rule at every
 implemented state), the review-only SPO profile, the no-direct-actuation
 adapter boundary, and the machine-protection final-veto declaration. With
 ``--map`` it additionally proves exact agreement with the portfolio machine
-map: project membership, the assigned configuration set,
-and the pinned source-registry version and digest.
+map: project membership, the assigned configuration set, and the pinned
+source-registry version and digest.
 """
 
 from __future__ import annotations
