@@ -133,7 +133,7 @@ max-statements = 56
 # every parameter by name, so the signature cannot be keyword-only and the
 # boolean is the case under test rather than a flag a caller might confuse
 # (scope of FBT001)
-"tests/test_observability.py" = ["S101", "FBT001"]
+"tests/test_observability_transformations.py" = ["FBT001"]
 # preflight executes fixed argument vectors of repository gates without a
 # shell and without untrusted input (scope of S603/S607)
 "tools/preflight.py" = ["S603", "S607"]
@@ -150,6 +150,7 @@ known-first-party = [
     "derive_studio_descriptor",
     "generate_capability_inventory",
     "preflight",
+    "observability_fixtures",
 ]
 
 [tool.mypy]
