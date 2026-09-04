@@ -52,6 +52,7 @@ REQUIRED_PATHS = (
     "docs/CONTROL_ADAPTER_SPECIFICATION.md",
     "docs/THREAT_MODEL.md",
     "docs/adr/0001-repository-boundary.md",
+    "docs/DEVICE_3D_MODEL_CONTRACT.md",
     "pyproject.toml",
     "docs/adr/0002-device-configuration-model.md",
     "docs/adr/0003-diagnostic-clock-semantics.md",

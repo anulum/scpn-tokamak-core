@@ -281,6 +281,9 @@ Bounded claims — what is NOT claimed:
 Evidence record of the `device_3d_model` capability
 (`computational_prototype`; design record:
 `docs/adr/0006-device-3d-and-cad-models.md`).
+Consumer contract, written from this repository's own code:
+`docs/DEVICE_3D_MODEL_CONTRACT.md`.
+
 
 What is exercised, all under the 100 % statement-and-branch coverage gate:
 
