@@ -43,6 +43,10 @@
   "evidence_maturity": "computational_prototype",
   "excluded_domains": [
     {
+      "domain": "shared_physics_geometry_and_numerics_kernels",
+      "owner": "SCPN-REACTOR-KERNELS"
+    },
+    {
       "domain": "solver_mathematics_and_validation_evidence",
       "owner": "SCPN-FUSION-CORE"
     },

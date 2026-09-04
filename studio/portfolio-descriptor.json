@@ -72,7 +72,7 @@
     "manifest_path": "reactor-domain.json",
     "manifest_schema": "scpn.reactor-domain.v1",
     "manifest_schema_version": "1.0.0",
-    "manifest_sha256": "d2a7564e9b12d319128c5d6a45f6d5ad1217f312497b0dbf8253f922771e126a",
+    "manifest_sha256": "1caf71c9bdab4cdc924b791a84b0cdf8548b3bfd2f6d2a098b9d6e0d9cf5ebf8",
     "repository": "SCPN-TOKAMAK-CORE"
   },
   "spo_registry": {
