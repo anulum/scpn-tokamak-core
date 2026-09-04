@@ -205,3 +205,73 @@ statement-and-branch gate:
   domain (`clk_facility` root, `clk_shot` member); multi-domain rules
   are exercised by test-constructed plans. Scopes are declarations;
   `mapping_state` stays `unmapped`.
+
+## Level-0 device physics
+
+Evidence record of the `level0_device_physics` capability
+(`computational_prototype`; design record: `docs/adr/0005-level0-device-physics.md`).
+
+What is exercised, all under the 100 % statement-and-branch coverage gate:
+
+- **Three closed forms nothing in the repository owned yet.** The plasma
+  volume by Pappus's theorem, exact for the elliptic cross-section; the
+  vacuum toroidal field at the inboard and outboard edges and their ratio,
+  with the ordering inboard > axis > outboard asserted; and the normalised
+  plasma current `I_p / (a B_t)`.
+- **Composition, not restatement.** The Greenwald limit and the
+  cylindrical safety factor stay on `OperationalLimits`; a test asserts
+  the record's values are exactly what those methods return, so there is
+  one source of truth per number and no room for two implementations to
+  drift apart.
+- **A limitation tested rather than mentioned.** The triangularity the
+  configuration carries does not enter the volume; a test asserts two
+  geometries differing only in triangularity give the same volume, and the
+  record's non-claims say that is a limitation.
+- **The safety margin is reported and not enforced.** A floor is a
+  declaration; refusing a configuration for missing its own floor would be
+  an admissibility decision this repository does not own. Both anchor
+  fixtures nonetheless meet their own floors, because a fixture that
+  declared a floor its own point missed would be incoherent, and a test
+  asserts it.
+- The Pappus check is asserted to one part in `1e-15` and **within one
+  unit in the last place**, not as an equality, because the implementation
+  and the theorem's statement group the six factors in different orders
+  and floating-point multiplication is not associative. That was measured:
+  the two differ by exactly one ulp.
+- Every refusal branch: a field, radius or current that is zero, negative,
+  infinite or not-a-number, each naming its field.
+- Canonical serialisation, digest identity, digest stability, and two
+  configurations giving two digests.
+
+Anchoring — a pair of regimes rather than a machine:
+
+- **Greenwald 2002 verifies the relation already implemented**: its
+  equation 1.3 prints `nG = I_P / (pi a^2)` in units of `10^20 m^-3`,
+  which is the form and the units of
+  `OperationalLimits.greenwald_density_limit_1e20_m3`.
+- **Peng & Strickler 1985 prints regime pairings**, and the two fixtures
+  sit at them: the spherical one at an aspect ratio of exactly `1.5` with
+  the elongation `2` the source pairs with it, the conventional one above
+  `2.5` with an elongation below the `1.4` the source calls natural there.
+  Both stay under the printed normalised-current ceiling of about
+  `7 MA/(m T)`.
+- The spherical fixture's radii are `1.5` and `1.0` rather than `1.2` and
+  `0.8`, because `1.2 / 0.8` is `1.4999999999999998` in binary and the
+  anchor asserts an equality.
+- **Declared, and said to be declared**: every absolute dimension. Neither
+  source prints a major radius, a field or a current, only the relations
+  among them.
+
+Bounded claims — what is NOT claimed:
+
+- No equilibrium, stability, transport or current-drive equation is
+  solved.
+- The toroidal field is the **vacuum** field; the plasma's own
+  paramagnetism and the discreteness of the coils are not modelled.
+- The density limit and the cylindrical safety factor are empirical
+  consistency instruments with documented applicability. They are **not**
+  predictions of disruption or stability.
+- The volume is exact for the elliptic cross-section only; the
+  triangularity does not enter it.
+- No yield, gain, confinement or breakeven statement is made, and no value
+  describes or validates a real machine.

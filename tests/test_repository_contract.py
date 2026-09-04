@@ -55,6 +55,7 @@ REQUIRED_PATHS = (
     "pyproject.toml",
     "docs/adr/0002-device-configuration-model.md",
     "docs/adr/0003-diagnostic-clock-semantics.md",
+    "docs/adr/0005-level0-device-physics.md",
     "conftest.py",
     "reactor-domain.json",
     "requirements-dev.txt",
@@ -67,6 +68,9 @@ REQUIRED_PATHS = (
     "src/scpn_tokamak_core/errors.py",
     "src/scpn_tokamak_core/geometry.py",
     "src/scpn_tokamak_core/limits.py",
+    "src/scpn_tokamak_core/physics/__init__.py",
+    "src/scpn_tokamak_core/physics/equilibrium.py",
+    "src/scpn_tokamak_core/physics/level0.py",
     "studio/portfolio-descriptor.json",
     "studio/portfolio-descriptor.schema.json",
     "tools/preflight.py",
@@ -139,6 +143,11 @@ def test_manifest_declares_exact_tokamak_assignment() -> None:
             "evidence_maturity": "computational_prototype",
             "evidence_pointer": "VALIDATION.md#diagnostic-and-clock-semantics",
         },
+        {
+            "identifier": "level0_device_physics",
+            "evidence_maturity": "computational_prototype",
+            "evidence_pointer": "VALIDATION.md#level-0-device-physics",
+        },
     ]
     assert manifest["claims"] == []
 
@@ -172,7 +181,7 @@ def test_descriptor_and_inventory_embed_current_manifest_digest() -> None:
     assert descriptor["source"]["manifest_sha256"] == digest
     assert inventory["source"]["manifest_sha256"] == digest
     assert descriptor["lifecycle"]["state"] == "not_federated"
-    assert inventory["implemented_capability_count"] == 2
+    assert inventory["implemented_capability_count"] == 3
 
 
 def test_no_agent_state_trees_exist() -> None:

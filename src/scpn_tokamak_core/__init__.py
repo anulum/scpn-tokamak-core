@@ -57,6 +57,16 @@ from scpn_tokamak_core.observability import (
     plan_from_bytes,
     plan_from_record,
 )
+from scpn_tokamak_core.physics import (
+    LEVEL0_NON_CLAIMS,
+    LEVEL0_SCHEMA,
+    LEVEL0_SCHEMA_VERSION,
+    Level0Physics,
+    OperatingPoint,
+    level0_physics,
+    plasma_volume_m3,
+    toroidal_field_at_radius_t,
+)
 from scpn_tokamak_core.plan_envelope import (
     PlanEnvelope,
     envelope_for_plan,
@@ -71,6 +81,9 @@ __all__ = [
     "APPLICABLE_CANDIDATES",
     "CATALOGUE_BINDING",
     "ELONGATION_BOUNDS",
+    "LEVEL0_NON_CLAIMS",
+    "LEVEL0_SCHEMA",
+    "LEVEL0_SCHEMA_VERSION",
     "OWNED_CONFIGURATIONS",
     "SPHERICAL_MAX_ASPECT_RATIO",
     "TRIANGULARITY_BOUNDS",
@@ -87,8 +100,10 @@ __all__ = [
     "DiagnosticPlan",
     "DiagnosticPlanError",
     "FrameKind",
+    "Level0Physics",
     "ObservabilityBinding",
     "ObservabilityClass",
+    "OperatingPoint",
     "OperationalLimits",
     "PlanEnvelope",
     "ReferenceFrame",
@@ -101,7 +116,10 @@ __all__ = [
     "envelope_for_plan",
     "envelope_from_bytes",
     "envelope_from_record",
+    "level0_physics",
     "plan_from_bytes",
     "plan_from_record",
+    "plasma_volume_m3",
+    "toroidal_field_at_radius_t",
     "verify_envelope",
 ]
