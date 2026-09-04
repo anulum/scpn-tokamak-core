@@ -25,3 +25,11 @@ class DiagnosticPlanError(ValueError):
     Every rejection carries the offending field and the violated bound in
     its message; nothing is clamped or silently corrected.
     """
+
+
+class DeviceGeometryError(ValueError):
+    """Raised when a device envelope or a built body violates the model.
+
+    Every rejection carries the offending field and the violated bound in
+    its message; nothing is clamped or silently corrected.
+    """

@@ -17,6 +17,16 @@ readme = "README.md"
 requires-python = ">=3.12"
 license = "AGPL-3.0-or-later"
 dynamic = ["version"]
+dependencies = [
+    "scpn-reactor-kernels @ git+https://github.com/anulum/scpn-reactor-kernels.git@9ea9eaee41a4378a8c23e647bbfde01bfb21bc49",
+]
+
+# The tier-G2 CAD model is an optional capability, not a runtime
+# requirement: every other capability works without a B-rep back-end, and
+# declaring the extra as a hard dependency would pull a ~1 GB back-end into
+# every environment. It names the same commit.
+[project.optional-dependencies]
+cad = ["scpn-reactor-kernels[cad] @ git+https://github.com/anulum/scpn-reactor-kernels.git@9ea9eaee41a4378a8c23e647bbfde01bfb21bc49"]
 
 [tool.setuptools.dynamic]
 version = { attr = "scpn_tokamak_core.__version__" }

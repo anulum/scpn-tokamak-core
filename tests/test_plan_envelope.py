@@ -42,7 +42,7 @@ from scpn_tokamak_core.plan_envelope import (
 )
 
 FIXTURE = Path(__file__).parent / "data" / "plan_envelope_fixture.json"
-FIXTURE_SHA256 = "93c014569d63c3305dfe998ba6271643e8a58fbd86c8764a613ca7111b417cb7"
+FIXTURE_SHA256 = "0aeb1326bcec476f7f07d9ffccda6478bd187cbd207d70b88335107a78803788"
 
 
 def fixture_document() -> dict[str, Any]:

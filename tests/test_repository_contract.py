@@ -56,6 +56,11 @@ REQUIRED_PATHS = (
     "docs/adr/0002-device-configuration-model.md",
     "docs/adr/0003-diagnostic-clock-semantics.md",
     "docs/adr/0005-level0-device-physics.md",
+    "docs/adr/0006-device-3d-and-cad-models.md",
+    "src/scpn_tokamak_core/device/__init__.py",
+    "src/scpn_tokamak_core/device/envelope.py",
+    "src/scpn_tokamak_core/device/model.py",
+    "src/scpn_tokamak_core/device/cad.py",
     "conftest.py",
     "reactor-domain.json",
     "requirements-dev.txt",
@@ -148,6 +153,16 @@ def test_manifest_declares_exact_tokamak_assignment() -> None:
             "evidence_maturity": "computational_prototype",
             "evidence_pointer": "VALIDATION.md#level-0-device-physics",
         },
+        {
+            "identifier": "device_3d_model",
+            "evidence_maturity": "computational_prototype",
+            "evidence_pointer": "VALIDATION.md#device-3d-model",
+        },
+        {
+            "identifier": "device_cad_model",
+            "evidence_maturity": "computational_prototype",
+            "evidence_pointer": "VALIDATION.md#device-cad-model",
+        },
     ]
     assert manifest["claims"] == []
 
@@ -181,7 +196,7 @@ def test_descriptor_and_inventory_embed_current_manifest_digest() -> None:
     assert descriptor["source"]["manifest_sha256"] == digest
     assert inventory["source"]["manifest_sha256"] == digest
     assert descriptor["lifecycle"]["state"] == "not_federated"
-    assert inventory["implemented_capability_count"] == 3
+    assert inventory["implemented_capability_count"] == 5
 
 
 def test_no_agent_state_trees_exist() -> None:
@@ -204,3 +219,41 @@ def test_descriptor_matches_ratified_schema() -> None:
     assert sorted(schema["required"]) == sorted(descriptor)
     assert sorted(schema["properties"]) == sorted(descriptor)
     assert descriptor["schema_version"] == "1.1.0"
+
+
+def test_kernel_library_pin_agrees_with_the_dependency_and_the_workflows() -> None:
+    """One commit, one version, one inventory digest: manifest, pyproject, CI."""
+    import tomllib
+
+    import scpn_reactor_kernels
+
+    manifest = load_json_object(REPO / "reactor-domain.json")
+    pin = manifest["kernel_library"]
+    assert pin["distribution"] == "scpn-reactor-kernels"
+    assert pin["kernels"] == [
+        "cad_brep_solids",
+        "cad_evidence",
+        "cad_faceting",
+        "cad_step_export",
+        "geometry_mesh_contract",
+        "geometry_primitives",
+        "geometry_unit_circle",
+        "numerics_transcendental",
+    ]
+    project = tomllib.loads((REPO / "pyproject.toml").read_text(encoding="utf-8"))
+    assert project["project"]["dependencies"] == [
+        (
+            "scpn-reactor-kernels @ git+https://github.com/anulum/"
+            f"scpn-reactor-kernels.git@{pin['source_commit']}"
+        )
+    ]
+    assert project["project"]["optional-dependencies"]["cad"] == [
+        (
+            "scpn-reactor-kernels[cad] @ git+https://github.com/anulum/"
+            f"scpn-reactor-kernels.git@{pin['source_commit']}"
+        )
+    ]
+    assert scpn_reactor_kernels.__version__ == pin["version"]
+    workflows = REPO / ".github" / "workflows"
+    for name in ("reusable-static-policy.yml", "reusable-tests.yml", "pre-commit.yml"):
+        assert "pip install -e" in (workflows / name).read_text(encoding="utf-8"), name

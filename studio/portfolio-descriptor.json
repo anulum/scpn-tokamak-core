@@ -20,6 +20,16 @@
       "evidence_maturity": "computational_prototype",
       "evidence_pointer": "VALIDATION.md#level-0-device-physics",
       "identifier": "level0_device_physics"
+    },
+    {
+      "evidence_maturity": "computational_prototype",
+      "evidence_pointer": "VALIDATION.md#device-3d-model",
+      "identifier": "device_3d_model"
+    },
+    {
+      "evidence_maturity": "computational_prototype",
+      "evidence_pointer": "VALIDATION.md#device-cad-model",
+      "identifier": "device_cad_model"
     }
   ],
   "configurations": [
@@ -62,7 +72,7 @@
     "manifest_path": "reactor-domain.json",
     "manifest_schema": "scpn.reactor-domain.v1",
     "manifest_schema_version": "1.0.0",
-    "manifest_sha256": "1f881c466706dd872f42c575587cb27f97a8361f41ef4167fbe9a5f40bcbe528",
+    "manifest_sha256": "d2a7564e9b12d319128c5d6a45f6d5ad1217f312497b0dbf8253f922771e126a",
     "repository": "SCPN-TOKAMAK-CORE"
   },
   "spo_registry": {

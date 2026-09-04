@@ -275,3 +275,74 @@ Bounded claims — what is NOT claimed:
   triangularity does not enter it.
 - No yield, gain, confinement or breakeven statement is made, and no value
   describes or validates a real machine.
+
+## Device 3D model
+
+Evidence record of the `device_3d_model` capability
+(`computational_prototype`; design record:
+`docs/adr/0006-device-3d-and-cad-models.md`).
+
+What is exercised, all under the 100 % statement-and-branch coverage gate:
+
+- Three bodies of the cylindrical periodic equivalent in a fixed order —
+  plasma column, vacuum vessel, toroidal-field winding — each a cylinder
+  or an annular tube about `z` from the shared kernel library, over the
+  periodic length `2 pi R0`.
+- **The cross-capability identity.** The built column's volume divided by
+  the volume the physics record computes by Pappus's theorem is the
+  inscribed-polygon ratio `(n / 2 pi) sin(2 pi / n)` and nothing else, at
+  8, 64 and 256 segments and in both anchored regimes. The column is
+  built at the area-equivalent radius `a sqrt(kappa)` precisely so that
+  this holds. Asserted within a relative tolerance rather than as an
+  equality: measured, the two sides part by 3 units in the last place at
+  8 segments and 133 at 256, which is 3e-14 relative.
+- The elongation reaching the bodies through that radius, and the
+  triangularity provably not reaching them: two configurations differing
+  only in triangularity build bodies of identical volume, while their
+  record digests still differ.
+- The bodies nesting without overlap, and every vertex sitting at one of
+  the two ends of the periodic length.
+- Fail-closed refusal of an invalid segment count and of a radial build
+  that reaches half the periodic length, where the unrolled machine would
+  self-intersect. Each refusal names its field and prints both sides.
+- The body set and its order validated on the container as well as in the
+  builder.
+- Canonical serialisation with a SHA-256 digest that moves with the
+  envelope and with the segment count.
+
+## Device CAD model
+
+Evidence record of the `device_cad_model` capability
+(`computational_prototype`; design record:
+`docs/adr/0006-device-3d-and-cad-models.md`).
+
+What is exercised, all under the 100 % statement-and-branch coverage gate:
+
+- The same three bodies as exact B-rep solids through the shared library's
+  `cad` group, each checked fail-closed by the library's evidence kernel
+  against its analytic closed forms and against its tier-G1 twin, and
+  exported as normalised STEP bytes with a digest.
+- **Which deflection binds, measured rather than copied.** On a device
+  metres across it is the angular criterion that sets the tessellation,
+  not the linear one. Three measurements say so: across a tenfold change
+  in the linear deflection the relative deficit did not move at all;
+  halving the angular deflection quartered it; and the deficit is the
+  same for all three bodies and both regimes although their radii differ
+  by tens of per cent and a factor of nearly two.
+- The consequence asserted directly: a tenfold finer linear deflection is
+  **refused**, because the declared bound `2 d / r` tightens with it while
+  the faceting does not. A tier that had copied a sibling family's
+  deflection would have found this in CI or not at all.
+- Every body inside its declared bound with margin, the narrowest still
+  nearly five times.
+- Fail-closed refusal of a manifest of the wrong schema or body count and
+  of bodies out of order, on the container itself.
+- STEP bytes present, their digest matching them, and the two regimes
+  producing different bytes.
+- Canonical serialisation with a SHA-256 digest, and both tiers bound to
+  the same configuration and envelope digests.
+
+Determinism of the STEP bytes is claimed within one pinned back-end
+environment only, never across back-end versions. No body is an
+engineering model, no fabrication tolerance is carried, and no value
+describes any real machine.

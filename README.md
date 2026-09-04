@@ -22,7 +22,7 @@ Orchestrator reactor registry: `conventional_tokamak` (axisymmetric torus) and
 `spherical_tokamak` (low-aspect-ratio axisymmetric torus).
 
 **Evidence maturity: `computational_prototype`** (per-capability; ADR 0002).
-Three capabilities are implemented: the device configuration model —
+Five capabilities are implemented: the device configuration model —
 validated parameter objects with documented consistency estimates,
 canonical serialisation, and a data-only SPO registry pin
 (evidence: `VALIDATION.md#device-configuration-model`) — and the
@@ -34,7 +34,12 @@ physics — the closed forms of a shaped torus and its vacuum field,
 composed with the density limit and safety factor the operational limits
 already compute rather than restating them, anchored on the regime
 pairings two filed sources print (ADR 0005, evidence:
-`VALIDATION.md#level-0-device-physics`). No parameter set or
+`VALIDATION.md#level-0-device-physics`); and the two geometry tiers —
+the tessellated and B-rep models of the cylindrical periodic equivalent,
+whose plasma column is built at the area-equivalent radius so its volume
+is the one the physics record computes (ADR 0006, evidence:
+`VALIDATION.md#device-3d-model` and `VALIDATION.md#device-cad-model`).
+No parameter set or
 channel describes any real machine or diagnostic; the claim inventory
 is empty and verified by the domain validator.
 
