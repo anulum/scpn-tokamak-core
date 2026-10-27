@@ -257,4 +257,6 @@ def test_kernel_library_pin_agrees_with_the_dependency_and_the_workflows() -> No
     assert scpn_reactor_kernels.__version__ == pin["version"]
     workflows = REPO / ".github" / "workflows"
     for name in ("reusable-static-policy.yml", "reusable-tests.yml", "pre-commit.yml"):
-        assert "pip install -e" in (workflows / name).read_text(encoding="utf-8"), name
+        assert "pip install --no-deps -e ." in (workflows / name).read_text(
+            encoding="utf-8"
+        ), name
