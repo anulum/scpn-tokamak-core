@@ -12,6 +12,14 @@ SCPN Tokamak Core — CHANGELOG
 
 ## [Unreleased]
 
+### Security
+
+- `configuration_from_bytes` now refuses duplicate JSON members and any
+  document that is not byte-for-byte the canonical serialisation, as the
+  diagnostic-plan and plan-envelope parsers already did. A duplicate member
+  was previously resolved last-wins, and a non-canonical document could
+  carry a configuration whose digest differs from the bytes received.
+
 ### Changed
 
 - Install every CI dependency from hash-locked requirement sets with
