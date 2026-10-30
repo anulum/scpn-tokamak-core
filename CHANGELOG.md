@@ -34,6 +34,11 @@ SCPN Tokamak Core — CHANGELOG
 
 ### Changed
 
+- `scpn_tokamak_core.observability` is now a package with one module per
+  responsibility — vocabulary, catalogue binding, frames, clocks, signals and
+  channels, plan composition, record parsing — behind the unchanged public
+  import path. The 33 public names, class identities, canonical plan bytes
+  and refusal behaviour are unchanged.
 - Local gates check what CI checks: `make typecheck`, `make test` and
   `make validate` run the hosted commands verbatim (the domain package was
   previously outside the local typing and coverage scope), a parity test

@@ -68,7 +68,7 @@ REQUIRED_PATHS = (
     "requirements-dev.txt",
     "src/scpn_tokamak_core/__init__.py",
     "src/scpn_tokamak_core/coils.py",
-    "src/scpn_tokamak_core/observability.py",
+    "src/scpn_tokamak_core/observability/__init__.py",
     "src/scpn_tokamak_core/plan_envelope.py",
     "tests/data/plan_envelope_fixture.json",
     "src/scpn_tokamak_core/configuration.py",
