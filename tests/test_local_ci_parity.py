@@ -119,9 +119,9 @@ def _ci_reference() -> set[str]:
 
 
 def test_reference_cohort_covers_every_source_root() -> None:
-    """The hosted cohort types and measures src, tools and tests."""
+    """The hosted cohort types every Python root and measures src and tools."""
     reference = _ci_reference()
-    assert "mypy --strict src tools tests" in reference
+    assert "mypy --strict src tools tests conftest.py" in reference
     assert (
         "pytest -q --cov=src --cov=tools --cov-branch --cov-fail-under=100" in reference
     )
@@ -145,7 +145,7 @@ def test_preflight_runs_every_hosted_gate() -> None:
 @pytest.mark.parametrize(
     ("before", "after"),
     [
-        ("mypy --strict src tools tests", "mypy --strict tools tests"),
+        ("mypy --strict src tools tests conftest.py", "mypy --strict tools tests"),
         ("--cov=src --cov=tools", "--cov=tools"),
         ("\t$(PYTHON) tools/audit_workflows.py\n", ""),
     ],
