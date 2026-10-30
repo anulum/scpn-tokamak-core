@@ -13,9 +13,13 @@ type: software
 title: SCPN Tokamak Core
 abstract: >-
   Governed device-family repository for conventional and spherical tokamak
-  configurations within the SCPN Reactor Systems Research Group. Currently
-  architecture-only: boundary contracts, CONTROL adapter specification, and
-  validation tooling, with no implemented reactor capability.
+  configurations within the SCPN Reactor Systems Research Group. Evidence
+  maturity computational_prototype: a validated device configuration model,
+  diagnostic and clock semantics aligned with the SCPN Phase Orchestrator
+  observability catalogue, level-0 device physics closed forms, and
+  tessellated and B-rep geometry models of a cylindrical periodic
+  equivalent. All parameter sets are synthetic; no real machine is
+  described, and the claim inventory is empty.
 authors:
   - family-names: Šotek
     given-names: Miroslav
