@@ -39,15 +39,16 @@ lint:
 	$(VENV)/ruff format --check .
 
 typecheck:
-	$(VENV)/mypy --strict tools tests
+	$(VENV)/mypy --strict src tools tests
 
 test:
-	$(VENV)/pytest -q --cov=tools --cov-branch --cov-fail-under=100
+	$(VENV)/pytest -q --cov=src --cov=tools --cov-branch --cov-fail-under=100
 
 validate:
 	$(PYTHON) tools/validate_reactor_domain.py reactor-domain.json
 	$(PYTHON) tools/derive_studio_descriptor.py --check
 	$(PYTHON) tools/generate_capability_inventory.py --check
+	$(PYTHON) tools/audit_workflows.py
 
 docs:
 	$(PYTHON) tools/preflight.py --only docs
