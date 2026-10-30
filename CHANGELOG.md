@@ -36,6 +36,9 @@ SCPN Tokamak Core — CHANGELOG
   surface so a new root, language or asset kind cannot land ungated. The
   documentation gate reads only files git would publish, so a git-ignored
   private tree no longer fails it locally.
+- Hooks without their own stage list run before a commit and before a
+  push only; the commit-msg stage now runs the trailer guard alone instead
+  of repeating the whole pre-commit chain on every commit.
 - Install every CI dependency from hash-locked requirement sets with
   `--require-hashes`: the development toolchain, the CAD extra, the audit
   and inventory tools, and the first-party kernel library by source-archive
