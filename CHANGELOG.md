@@ -45,6 +45,12 @@ SCPN Tokamak Core — CHANGELOG
 
 ### Added
 
+- README badge block for the evidence this repository has earned: the CI,
+  CodeQL, pre-commit, security-audit and docs workflows on `main`, the
+  AGPL-3.0-or-later licence, the commercial licence route and GitHub
+  Sponsors. A contract test binds each badge to its exact workflow file,
+  repository and target and keeps unearned services (REUSE registration,
+  Scorecard, Best Practices, PyPI) out until they are qualified.
 - Diagnostic-plan depth: per-channel signal inventories, frame
   transformations with a fixed kind-admissibility table and connectivity
   rule, and a clock topology partitioning the physical clocks into rooted
