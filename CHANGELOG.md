@@ -22,6 +22,14 @@ SCPN Tokamak Core — CHANGELOG
 
 ### Changed
 
+- Local gates check what CI checks: `make typecheck`, `make test` and
+  `make validate` run the hosted commands verbatim (the domain package was
+  previously outside the local typing and coverage scope), a parity test
+  binds the make targets and the preflight plan to the hosted workflows,
+  and an enrollment test maps every tracked file to exactly one gated
+  surface so a new root, language or asset kind cannot land ungated. The
+  documentation gate reads only files git would publish, so a git-ignored
+  private tree no longer fails it locally.
 - Install every CI dependency from hash-locked requirement sets with
   `--require-hashes`: the development toolchain, the CAD extra, the audit
   and inventory tools, and the first-party kernel library by source-archive
