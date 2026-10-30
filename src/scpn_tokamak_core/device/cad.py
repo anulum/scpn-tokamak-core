@@ -38,7 +38,7 @@ from scpn_reactor_kernels.cad import (
     step_bytes,
     step_sha256,
 )
-from scpn_reactor_kernels.errors import CadError, GeometryError
+from scpn_reactor_kernels.errors import CadError, CadUnavailableError, GeometryError
 from scpn_reactor_kernels.geometry import TriangleMesh
 
 from scpn_tokamak_core.configuration import DeviceConfiguration
@@ -314,6 +314,8 @@ def build_device_cad(
             linear_deflection_m,
             segments,
         )
+    except CadUnavailableError:
+        raise
     except (CadError, GeometryError) as exc:
         raise DeviceGeometryError(str(exc)) from exc
     manifest = assembly.manifest()

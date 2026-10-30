@@ -12,6 +12,12 @@ SCPN Tokamak Core — CHANGELOG
 
 ## [Unreleased]
 
+### Fixed
+
+- `build_device_cad` raises `CadUnavailableError` when the optional CAD
+  back-end is missing, as documented; it previously re-raised it as
+  `DeviceGeometryError`.
+
 ### Security
 
 - All three public parsers (`configuration_from_bytes`, `plan_from_bytes`,
@@ -48,6 +54,13 @@ SCPN Tokamak Core — CHANGELOG
 
 ### Added
 
+- An installed-wheel job in the required CI gate: the wheel is built
+  without build isolation from hash-locked `setuptools` and `wheel`
+  (`requirements-build.txt`), installed into clean base and CAD
+  environments and exercised from outside the checkout by
+  `tools/installed_package_check.py` — package location, `py.typed`,
+  installed metadata, the configuration → level-0 → device-model path, and
+  the CAD back-end absent in base and building a STEP model with the extra.
 - `tools/check_commit_trailers.py --audit-range REV_RANGE` checks the
   messages of existing commits read-only with the commit-msg rules, reporting
   each violating commit; exit `2` when the range cannot be read.
