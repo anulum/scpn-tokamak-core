@@ -160,6 +160,9 @@ max-statements = 56
 # with "-" is refused before git sees it (scope of S603)
 "tools/check_commit_trailers.py" = ["S603"]
 "tests/test_check_commit_trailers.py" = ["S603"]
+# the replay test starts a fresh interpreter (sys.executable) with a fixed
+# program and the configuration bytes on stdin, without a shell (scope of S603)
+"tests/test_level0_replay.py" = ["S603"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
