@@ -14,6 +14,12 @@ SCPN Tokamak Core — CHANGELOG
 
 ### Security
 
+- All three public parsers (`configuration_from_bytes`, `plan_from_bytes`,
+  `envelope_from_bytes`) now report JSON nested deeper than the decoder can
+  follow as their own error type; a `RecursionError` previously escaped
+  them. Property and fuzz tests cover arbitrary bytes, single-byte
+  mutations, field substitutions and overflowing number literals for all
+  three.
 - `configuration_from_bytes` now refuses duplicate JSON members and any
   document that is not byte-for-byte the canonical serialisation, as the
   diagnostic-plan and plan-envelope parsers already did. A duplicate member

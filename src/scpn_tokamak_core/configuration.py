@@ -478,8 +478,9 @@ def configuration_from_bytes(data: bytes) -> DeviceConfiguration:
     Raises
     ------
     DeviceConfigurationError
-        If the document is not valid strict JSON, carries a duplicate
-        member, violates the model, or is not canonical.
+        If the document is not valid strict JSON, nests deeper than the
+        decoder can follow, carries a duplicate member, violates the
+        model, or is not canonical.
     """
 
     def _reject_constant(literal: str) -> float:
@@ -495,6 +496,8 @@ def configuration_from_bytes(data: bytes) -> DeviceConfiguration:
         )
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise DeviceConfigurationError(f"record: invalid JSON document: {exc}") from exc
+    except RecursionError as exc:
+        raise DeviceConfigurationError("record: JSON nesting is too deep") from exc
     configuration = configuration_from_record(record)
     if configuration.canonical_bytes() != data:
         raise DeviceConfigurationError("record: non-canonical document is rejected")
