@@ -51,10 +51,12 @@ bind. Four candidates apply to the configurations this repository owns:
 4. Timing is fail-closed where physics fixes the bound: the Nyquist
    criterion for cyclic channels and clock resolution at or below the
    declared event-timing uncertainty. Device-typical band checks are
-   advisory only: the tokamak tearing/kink band 1–100 kHz
-   (I. H. Hutchinson, Principles of Plasma Diagnostics, 2nd ed., 2002,
-   ch. 10) and the 10–100 µs ELM/sawtooth rise scale
-   (H. Zohm, PPCF 38 (1996) 105).
+   advisory only and compare against declared synthetic design bounds: a
+   tearing/kink band of 1–100 kHz and a 100 µs transient-timing bound. An
+   earlier version credited them to I. H. Hutchinson, Principles of Plasma
+   Diagnostics (2002), ch. 10, and H. Zohm, PPCF 38 (1996) 105, neither of
+   which is on file, so they were never checked against them (attribution
+   removed 2026-10-31).
 5. Every applicable candidate must be planned or explicitly deferred
    with a reason; every channel is `synthetic=True` by hard invariant.
    No SPO semantic-profile ingress is declared: the profile registry's

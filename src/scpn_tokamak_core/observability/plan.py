@@ -425,8 +425,9 @@ class DiagnosticPlan:
                         field=f"channels[{channel.identifier}].max_signal_frequency_hz",
                         message=(
                             f"declared MHD band {channel.max_signal_frequency_hz:.1f}"
-                            " Hz is outside the typical tokamak tearing/kink "
-                            "range 1-100 kHz (Hutchinson 2002, ch. 10)"
+                            " Hz is outside the declared tearing/kink design "
+                            "band 1-100 kHz (synthetic; not checked against a "
+                            "source on file)"
                         ),
                     )
                 )
@@ -440,8 +441,9 @@ class DiagnosticPlan:
                         field=f"channels[{channel.identifier}].timing_uncertainty_s",
                         message=(
                             f"timing uncertainty {channel.timing_uncertainty_s:.2e} s"
-                            " is coarser than the 10-100 us rise scale of "
-                            "ELM and sawtooth transients (Zohm 1996)"
+                            " is coarser than the declared 100 us transient "
+                            "timing design bound (synthetic; not checked "
+                            "against a source on file)"
                         ),
                     )
                 )
