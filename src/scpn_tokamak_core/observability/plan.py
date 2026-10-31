@@ -454,9 +454,9 @@ class DiagnosticPlan:
                         message=(
                             "acquisition window "
                             f"{channel.acquisition_duration_s:.2e} s is "
-                            "longer than the tokamak flat-top scale "
-                            "of up to ~100 s "
-                            "(ITER Physics Basis 1999)"
+                            "longer than the declared ~100 s flat-top "
+                            "bound (synthetic; not checked against a "
+                            "source on file)"
                         ),
                     )
                 )
