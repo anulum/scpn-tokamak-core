@@ -8,13 +8,14 @@
 
 """Fixtures of the level-0 physics tests: two anchored regimes.
 
-This family's anchor is unusual: the filed source prints **relations
-between regimes** rather than one machine. Peng and Strickler
+These fixtures use printed relations between regimes rather than copying
+the parameters of a real machine. Peng and Strickler
 (ORNL/FEDC-85/6, 1985) print that a spherical torus is a device of aspect
 ratio below two; that at ``A ~ 1.5`` an elongation of ``kappa = 2`` occurs
 naturally with only a dipole vertical field; that for ``A > 2.5`` the
 natural elongation is **less than 1.4**; and that the normalised plasma
-current reaches about ``7 MA/(m T)``.
+current ``I_p / (a B_t0)`` reaches about ``7 MA/(m T)``, using the vacuum
+toroidal field at the plasma major radius.
 
 So there are two anchor fixtures, one for each configuration this
 repository owns, and each sits at a printed pairing: the spherical one at
@@ -28,10 +29,10 @@ Greenwald (Plasma Phys. Control. Fusion 44 (2002) R27) prints
 line-averaged density in units of 10^20 m^-3", which is the form and the
 units this repository already implements.
 
-Declared here, and said to be declared: every absolute dimension. Neither
-source prints a machine's major radius, field or current, only the
-relations among them, so the fixtures choose values that sit at the
-printed pairings and nothing more is claimed for them.
+Every absolute dimension here is a declared synthetic choice. The source
+reports also contain dimensions and machine examples; those values are
+not the provenance of these fixtures. Only the selected regime pairings
+and density relation are reproduced.
 """
 
 from __future__ import annotations

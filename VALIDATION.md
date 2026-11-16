@@ -83,9 +83,10 @@ What is exercised, all under the 100 % statement-and-branch coverage gate:
   stated in the code: the Greenwald density limit
   `n_G = I_p / (pi a^2)` (Greenwald, PPCF 44 (2002) R27) and the
   elongation-corrected cylindrical safety-factor estimate
-  `q_cyl = 5 a^2 B_t (1 + kappa^2) / (2 R0 I_p)` (ITER Physics Basis,
-  Nucl. Fusion 39 (1999) 2137, ch. 1); consistency findings are reported,
-  never clamped.
+  `q_cyl = 5 a^2 B_t (1 + kappa^2) / (2 R0 I_p)` (N. A. Uckan and
+  J. Sheffield, ORNL/TM-9722, September 1985, p. 11, equation 23,
+  rearranged for the equivalent cylindrical `q_*`); consistency findings are
+  reported, never clamped.
 - Canonical serialisation (sorted keys, NaN/infinity rejected on both
   emit and parse), SHA-256 digest identity, and a strict round-trip
   parser that refuses unknown fields.
@@ -258,9 +259,10 @@ Anchoring — a pair of regimes rather than a machine:
 - The spherical fixture's radii are `1.5` and `1.0` rather than `1.2` and
   `0.8`, because `1.2 / 0.8` is `1.4999999999999998` in binary and the
   anchor asserts an equality.
-- **Declared, and said to be declared**: every absolute dimension. Neither
-  source prints a major radius, a field or a current, only the relations
-  among them.
+- **Declared synthetic dimensions**: every absolute dimension in these
+  fixtures is chosen here. The source reports also include dimensions and
+  machine examples; those values are not the provenance of these fixtures.
+  The reproduced anchors are the selected regime pairings and relation.
 
 Bounded claims — what is NOT claimed:
 

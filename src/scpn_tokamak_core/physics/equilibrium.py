@@ -15,8 +15,8 @@ Three relations, each exact rather than fitted.
 kappa``. That is Pappus's theorem, not an approximation: the centroid of
 the ellipse travels ``2 pi R`` and its area is ``pi kappa a^2``. The
 triangularity the configuration also carries does **not** enter it — a
-triangular deformation moves area around the centroid without changing it
-to first order, and this module does not pretend otherwise.
+triangular shape is not represented by this ellipse model. The relation
+does not give the volume of a general triangular cross-section.
 
 **Vacuum toroidal field.** Outside the coils the toroidal field falls as
 one over the major radius, ``B(R) = B_0 R_0 / R``, so a tokamak plasma
@@ -25,9 +25,10 @@ the ratio of those radii. Exact for a vacuum field; the plasma's own
 paramagnetism is not modelled.
 
 **Normalised plasma current.** ``I_p / (a B_t)`` in megaampere per
-metre-tesla, the quantity Peng and Strickler print a ceiling for when
-describing the spherical-torus regime (ORNL/FEDC-85/6, 1985: "large plasma
-current with I/(a B) up to about 7 MA/mT").
+metre-tesla. Here ``B_t`` is the vacuum field on axis, corresponding to
+``B_t0`` in Peng and Strickler (ORNL/FEDC-85/6, 1985, abstract p. v and
+definition p. 5). Their reported scale of about 7 MA/(m T) describes the
+spherical-torus regime; this function does not impose it as a limit.
 """
 
 from __future__ import annotations
@@ -38,8 +39,8 @@ from typing import Final
 from scpn_tokamak_core.errors import DeviceConfigurationError
 from scpn_tokamak_core.geometry import ToroidalGeometry
 
-#: Ceiling on the normalised plasma current that Peng and Strickler print
-#: for the spherical-torus regime, in megaampere per metre-tesla.
+#: Reported normalised-current scale for the spherical-torus regime, in
+#: megaampere per metre-tesla; the public constant name is retained.
 SPHERICAL_TORUS_NORMALISED_CURRENT_CEILING: Final = 7.0
 #: Aspect ratio below which that paper calls a device a spherical torus.
 SPHERICAL_TORUS_ASPECT_RATIO: Final = 2.0
@@ -85,8 +86,8 @@ def plasma_volume_m3(geometry: ToroidalGeometry) -> float:
     float
         ``2 pi^2 R a^2 kappa``, exact by Pappus's theorem for an elliptic
         cross-section swept about the major radius. The triangularity does
-        not enter: a triangular deformation redistributes area about the
-        centroid without changing it to first order.
+        not enter because this model uses an ellipse rather than a
+        triangular cross-section.
     """
     return (
         2.0
@@ -142,7 +143,8 @@ def normalised_current_ma_per_mt(
     minor_radius_m
         Plasma minor radius; strictly positive.
     toroidal_field_t
-        Toroidal field on axis; strictly positive.
+        Vacuum toroidal field on axis; strictly positive. This is the
+        ``B_t0`` used by the source's normalised-current definition.
 
     Returns
     -------

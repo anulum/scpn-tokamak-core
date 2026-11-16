@@ -15,13 +15,15 @@ about any real machine follows from them.
 
 - Greenwald density limit ``n_G = I_p / (pi * a**2)`` in units of
   ``10^20 m^-3`` with ``I_p`` in MA and ``a`` in metres
-  (M. Greenwald, Plasma Phys. Control. Fusion 44 (2002) R27).
+  (M. Greenwald, Plasma Phys. Control. Fusion 44 (2002), p. R28,
+  equation 1.3).
 - Cylindrical equivalent safety factor
   ``q_cyl = 5 a^2 B_t (1 + kappa^2) / (2 R0 I_p)`` with ``B_t`` in tesla
   and ``I_p`` in MA — the elongation-corrected cylindrical estimate
-  (ITER Physics Basis, Nucl. Fusion 39 (1999) 2137, ch. 1); it
-  approximates edge safety only for large aspect ratio and moderate
-  shaping.
+  (N. A. Uckan and J. Sheffield, ORNL/TM-9722, September 1985,
+  p. 11, equation 23, rearranged for ``q_*``). The finite-aspect-ratio
+  factor and separate triangularity correction are omitted; it is an
+  equivalent cylindrical quantity, not a calculated edge safety factor.
 """
 
 from __future__ import annotations

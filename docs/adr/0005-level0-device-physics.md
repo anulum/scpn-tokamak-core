@@ -44,8 +44,9 @@ it exists and the question is what a record adds.
    at the inboard and outboard edges, and their ratio. A tokamak plasma
    does not sit in one field, and the record says by how much.
 
-   *The normalised plasma current* `I_p / (a B_t)`, the quantity Peng and
-   Strickler print a ceiling for.
+   *The normalised plasma current* `I_p / (a B_t)`, with the model's vacuum
+   field on axis corresponding to Peng and Strickler's `B_t0`. Their
+   reported scale is not an enforced operating limit.
 
 3. **And the compositions a reader would otherwise do by hand**: the
    density the declared Greenwald fraction asks for, and the safety factor
@@ -56,8 +57,8 @@ it exists and the question is what a record adds.
    repository's to make.
 
 4. **The triangularity does not enter the volume, and that is written
-   down.** A triangular deformation moves area about the centroid without
-   changing it to first order, so the volume reported is the elliptic one.
+   down.** The volume reported is for the elliptic model, which does not
+   represent a general triangular cross-section.
    The docstring says so, the record's non-claims say so, and a test
    asserts that two geometries differing only in triangularity give the
    same volume — because a silent limitation is the kind a reader
@@ -69,7 +70,8 @@ it exists and the question is what a record adds.
 
 ## Anchoring: a pair of regimes, not a machine
 
-Neither filed source prints one machine. Greenwald (2002) prints the
+These fixtures reproduce selected relations, not a real machine's complete
+parameter set. Greenwald (2002) prints the
 density limit itself — equation 1.3, `nG = I_P / (pi a^2)`, "where nG is
 the line-averaged density in units of 10^20 m^-3" — which verifies the
 relation this repository already implemented, in both form and units.
@@ -89,8 +91,9 @@ The spherical fixture's radii are 1.5 and 1.0 rather than 1.2 and 0.8 for
 a measured reason: `1.2 / 0.8` is `1.4999999999999998` in binary and
 `1.5 / 1.0` is exact, so the anchor test asserts an equality.
 
-Every absolute dimension is declared and said to be declared. Neither
-source prints a major radius, a field or a current.
+Every absolute fixture dimension is declared as a synthetic choice. The
+source reports also contain dimensions and machine examples, but these
+fixtures do not copy their complete parameter sets.
 
 ## Consequences
 

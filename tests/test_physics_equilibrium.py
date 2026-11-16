@@ -58,11 +58,9 @@ def test_the_volume_scales_linearly_in_the_elongation() -> None:
 def test_the_triangularity_does_not_enter_the_volume() -> None:
     """Stated in the docstring and in the non-claims, so it is tested.
 
-    A triangular deformation moves area about the centroid without
-    changing it to first order, so the volume this module reports is the
-    elliptic one. Two geometries differing only in triangularity give the
-    same volume, and the record says that is a limitation rather than a
-    result.
+    This module evaluates an elliptic cross-section. Two geometries
+    differing only in triangularity give the same volume because that
+    parameter is omitted by the model; the record states the limitation.
     """
     assert plasma_volume_m3(ToroidalGeometry(6.0, 2.0, 1.8, 0.0)) == plasma_volume_m3(
         ToroidalGeometry(6.0, 2.0, 1.8, 0.5)
@@ -95,7 +93,7 @@ def test_the_field_refuses_each_argument_by_name(
 
 
 def test_the_normalised_current_is_the_printed_quantity() -> None:
-    """``I_p / (a B_t)``, the ratio the spherical-torus paper bounds."""
+    """Use the source's ratio with the vacuum field on axis."""
     assert normalised_current_ma_per_mt(15.0, 2.0, 5.3) == 15.0 / (2.0 * 5.3)
 
 
